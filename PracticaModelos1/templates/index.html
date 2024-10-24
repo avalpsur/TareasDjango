@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestión de Tareas</title>
+    </head>
+    <body>
+        <h1>GESTIÓN DE TAREAS</h1>
+        <h2>Listado de enlaces</h2>
+        <ol>
+            <li><a href="{% url 'lista_proyectos' %}">Listado de proyectos</a></li>
+            <li><a href="{% url 'lista_tareas_proyecto' 1 %}">Listado de tareas asignadas al proyecto 1</a></li>
+            <li><a href="{% url 'lista_usuarios_tarea' 1 %}">Listado de usuarios asignados a la tarea 1</a></li>
+            <li><a href="{% url 'lista_tareas_observacion' 'many' %}">Listado de tareas que contengan la palabra "many"</a></li>
+            <li><a href="{% url 'lista_tareas_intervalo' 'many' %}">Listado de tareas creadas entre dos fechas</a></li>
+        </ol>
+</body>
+</html>

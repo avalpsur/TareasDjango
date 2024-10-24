@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Lista de Tareas</h1>
+
+        {% for tarea in tareas_mostrar %}
+            <div>
+                <h2>Título de la tarea:</h2>
+                <p>{{ tarea.titulo }}</p>
+
+                <h2>Descripción:</h2>
+                <p>{{ tarea.descripcion }}</p>
+
+                <h2>Prioridad:</h2>
+                <p>{{ tarea.prioridad }}</p>
+
+                <h2>Estado:</h2>
+                <p>{{ tarea.estado }}</p>
+
+                <h2>¿Completada?:</h2>
+                <p>{{ tarea.completada }}</p>
+
+                <h2>Fecha de creación:</h2>
+                <p>{{ tarea.fecha_creacion }}</p>
+
+                <h2>Hora de vencimiento:</h2>
+                <p>{{ tarea.hora_vencimiento }}</p>
+
+                <h2>Proyecto asociado:</h2>
+                <p>{{ tarea.proyecto.nombre }}</p>
+
+                <h2>Creador:</h2>
+                <p>{{ tarea.creador.nombre }}</p>
+
+                <h2>Usuarios asignados:</h2>
+                <ul>
+                    {% for asignacion in tarea.usuario.all %}
+                        <li>{{ asignacion.nombre }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+        
+    </body>
+</html>

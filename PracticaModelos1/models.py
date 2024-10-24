@@ -12,17 +12,17 @@ class Usuario(models.Model):
     
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=250) 
-    descripcion = models.TextField()  
+    descripcion = models.TextField(max_length=500)  
     duracion_estimada = models.FloatField() 
     fecha_inicio = models.DateField(default=timezone.now) 
-    fecha_finalizacion = models.DateField() 
+    fecha_finalizacion = models.DateField(default=timezone.now) 
     
     Asignaciones = models.ManyToManyField(Usuario,related_name="ProyectosAsignados")
     creador = models.ForeignKey(Usuario,on_delete = models.CASCADE)
 
 class Tarea(models.Model):
     titulo = models.CharField(max_length=250) 
-    descripcion = models.TextField() 
+    descripcion = models.TextField(max_length=500) 
     prioridad = models.IntegerField()
     
     ESTADOS = [
@@ -31,9 +31,9 @@ class Tarea(models.Model):
         ("Com","Completada"),
     ]
     estado = models.CharField(max_length=50,choices=ESTADOS,default='Pendiente')
-    completada = models.BooleanField()
+    completada = models.BooleanField(default=False)
     fecha_creacion = models.DateField(default=timezone.now)
-    hora_vencimiento = models.TimeField() 
+    hora_vencimiento = models.TimeField(default=timezone.now) 
     
     creador = models.ForeignKey(Usuario, related_name="creador", on_delete = models.CASCADE)
     
@@ -50,11 +50,11 @@ class AsignacionDeTarea(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
     tarea = models.ForeignKey(Tarea, on_delete = models.CASCADE)
     
-    observaciones = models.TextField() 
+    observaciones = models.TextField(max_length=500) 
     fecha_asignacion = models.DateTimeField(default=timezone.now)
 
 class Comentario(models.Model):
-    contenido = models.TextField()  
+    contenido = models.TextField(max_length=500)  
     fecha_comentario = models.DateTimeField(default=timezone.now)
     autor = models.ForeignKey(Usuario,on_delete = models.CASCADE)
     tarea = models.ForeignKey(Tarea,on_delete = models.CASCADE)

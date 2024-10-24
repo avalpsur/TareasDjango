@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Lista de Proyectos</h1>
+
+        {% for proyecto in proyectos_mostrar %}
+            <div>
+                <h2>Nombre del proyecto:</h2>
+                <p>{{ proyecto.nombre }}</p>
+
+                <h2>Descripción:</h2>
+                <p>{{ proyecto.descripcion }}</p>
+
+                <h2>Duración estimada:</h2>
+                <p>{{ proyecto.duracion_estimada }}</p>
+
+                <h2>Fecha de inicio:</h2>
+                <p>{{ proyecto.fecha_inicio }}</p>
+
+                <h2>Fecha de finalización:</h2>
+                <p>{{ proyecto.fecha_finalizacion }}</p>
+
+                <h2>Asignaciones:</h2>
+                <ul>
+                    {% for asignacion in proyecto.Asignaciones.all %}
+                        <li>{{ asignacion.nombre }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h2>Creador:</h2>
+                <p>{{ proyecto.creador.nombre }}</p>
+            </div>
+        {% endfor %}
+        
+    </body>
+</html>
