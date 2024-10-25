@@ -8,5 +8,6 @@ urlpatterns = [
     path('tareas/listar/<int:id_proyecto>', views.listar_tareas_proyecto,name='lista_tareas_proyecto'),
     path('usuario/listar/<int:id_tarea>', views.listar_usuarios_tarea, name='lista_usuarios_tarea'),
     path('tareas/listar/<str:texto_tarea>',views.listar_tareas_observaciones, name='lista_tareas_observacion'),
-    path('tareas/listar/<int:ano_inicio>/<int:ano_fin>/<str_completada>',views.listar_tareas_intervalo, name='lista_tareas_intervalo'),
+    path('tareas/listar/<int:ano_inicio>/<int:ano_fin>/<str:estado>',views.listar_tareas_intervalo, name='lista_tareas_intervalo'),
+    path('usuario/listarProyecto/<int:id_tarea>',views.listar_ultimoUsuario,name='lista_ultimoUsuario'),
 ]   
