@@ -38,6 +38,6 @@ def listar_tareas_intervalo(request,ano_inicio,ano_fin,estado):
     return render(request, 'tarea/lista.html',{"tareas_mostrar":tareas})
 
 
-def listar_ultimoUsuario(request,id_tarea):
-    usuario = Usuario.objects.filter(asignaciondetarea__tarea__id=id_tarea).order_by("-comentario__fecha_comentario")[:1].get()
+def listar_ultimoUsuario(request,id_proyecto):
+    usuario = Usuario.objects.filter(comentario__tarea__proyecto=id_proyecto).order_by("-comentario__fecha_comentario")[:1].get()
     return render(request, 'usuario/usuario.html',{"usuario":usuario})
