@@ -17,7 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
+handler404 = "PracticaModelos1.views.error_404",
+handler500 = "PracticaModelos1.views.error_500",
+handler400 = "PracticaModelos1.views.error_403",
+handler403 = "PracticaModelos1.views.error_400",
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("PracticaModelos1.urls"))
+    path('',include("PracticaModelos1.urls")),
 ]

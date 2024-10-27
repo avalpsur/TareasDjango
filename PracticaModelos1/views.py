@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.views.defaults import page_not_found
 
 # Create your views here.
 
@@ -41,3 +42,30 @@ def listar_tareas_intervalo(request,ano_inicio,ano_fin,estado):
 def listar_ultimoUsuario(request,id_proyecto):
     usuario = Usuario.objects.filter(comentario__tarea__proyecto=id_proyecto).order_by("-comentario__fecha_comentario")[:1].get()
     return render(request, 'usuario/usuario.html',{"usuario":usuario})
+
+
+def listar_comentarios(request,palabra,fecha,id_tarea):
+    comentarios = Comentario.objects.filter(tarea=id_tarea,contenido__startswith=palabra,fecha_comentario__year=fecha).all()
+    return render(request, 'comentario/lista.html',{"comentario":comentarios})
+
+
+def listar_etiquetas(request,id_proyecto):
+    etiquetas = Etiqueta.objects.filter(tarea__proyecto=id_proyecto).all()
+    return render(request, 'etiqueta/lista.html',{"etiqueta":etiquetas})
+
+
+def listar_usuarios_sinTarea(request):
+    usuarios = Usuario.objects.filter(asignaciondetarea=None)
+    return render(request, 'usuario/lista.html',{"usuarios_mostrar":usuarios})
+
+def error_404(request, exception=None):
+    return render(request, 'errores/404.html',None,None,404)
+
+def error_500(request,exception = None):
+    return render(request, 'errores/500.html',None,None,500)
+
+def error_403(request, exception=None):
+    return render(request, 'errores/403.html',None,None,403)
+
+def error_400(request, exception=None):
+    return render(request, 'errores/400.html',None,None,400)

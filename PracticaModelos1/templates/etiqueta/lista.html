@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Etiquetas</title>
+</head>
+<body>
+    <h1>Etiquetas del Proyecto</h1>
+
+    <ul>
+        {% for etiqueta in etiqueta %}
+            <li>{{ etiqueta.nombre }}</li>
+        {% empty %}
+            <li>No hay etiquetas disponibles para este proyecto.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+
