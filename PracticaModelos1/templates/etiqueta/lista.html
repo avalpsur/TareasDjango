@@ -1,3 +1,5 @@
+{% extends "principal.html" %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 
     <ul>
         {% for etiqueta in etiqueta %}
-            <li>{{ etiqueta.nombre }}</li>
+            {% include "etiqueta.html" %}
         {% empty %}
             <li>No hay etiquetas disponibles para este proyecto.</li>
         {% endfor %}

@@ -37,7 +37,7 @@ class Tarea(models.Model):
     
     creador = models.ForeignKey(Usuario, related_name="creador", on_delete = models.CASCADE)
     
-    proyecto=models.ForeignKey(Proyecto, on_delete = models.CASCADE)
+    proyecto=models.ForeignKey(Proyecto, related_name="proyecto_tareas", on_delete = models.CASCADE)
     
     usuario = models.ManyToManyField(Usuario, related_name="usuario",through='AsignacionDeTarea')
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Prefetch
 from .models import *
 from django.views.defaults import page_not_found
 
@@ -9,8 +10,7 @@ def index(request):
 
 
 def listar_proyectos(request):
-    proyectos = Proyecto.objects.select_related("creador").prefetch_related("Asignaciones")
-    proyectos = proyectos.all()
+    proyectos = Proyecto.objects.select_related("creador").prefetch_related("Asignaciones",Prefetch("proyecto_tareas")).all()
     return render(request,'proyecto/lista.html',{"proyectos_mostrar":proyectos})
 
 

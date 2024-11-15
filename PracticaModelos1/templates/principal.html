@@ -1,0 +1,16 @@
+<html>
+    {% load static %}
+    <head>
+        <title>Gestion de Tareas</title>
+        <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    </head>
+    <body>
+        <link rel="stylesheet" href="{% static 'javascript/script.js' %}">
+        <img src="{% static 'imagenes/imagen.png' %}" alt="Imagen">
+
+        <h1>GESTIÓN DE TAREAS</h1>
+
+        {% include 'estructura/nav.html' %}
+        {% include 'estructura/pie.html' %}
+    </body>
+</html>

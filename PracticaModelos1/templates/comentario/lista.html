@@ -1,3 +1,4 @@
+{% extends "principal.html" %}
 <!DOCTYPE html>
 <html>
     <head></head>
@@ -5,19 +6,7 @@
         <h1>Lista de Comentarios</h1>
 
         {% for comentario in comentario %}
-            <div>
-                <h2>Contenido del comentario:</h2>
-                <p>{{ comentario.contenido }}</p>
-
-                <h2>Fecha del comentario:</h2>
-                <p>{{ comentario.fecha_comentario }}</p>
-
-                <h2>Autor del comentario:</h2>
-                <p>{{ comentario.autor.nombre }}</p>
-
-                <h2>Tarea asociada:</h2>
-                <p>{{ comentario.tarea.titulo }}</p>
-            </div>
+            {% include "comentario.html" %}
         {% endfor %}
         
     </body>

@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestión de Tareas</title>
-    </head>
-    <body>
-        <h1>GESTIÓN DE TAREAS</h1>
-        <h2>Listado de enlaces</h2>
-    <ol>
-        <li><a href="{% url 'lista_proyectos' %}">Listado de proyectos</a></li>
-        <li><a href="{% url 'lista_tareas_proyecto' 1 %}">Listado de tareas asignadas al proyecto 1</a></li>
-        <li><a href="{% url 'lista_usuarios_tarea' 1 %}">Listado de usuarios asignados a la tarea 1</a></li>
-        <li><a href="{% url 'lista_tareas_observacion' 'many' %}">Listado de tareas que contengan la palabra "many"</a></li>
-        <li><a href="{% url 'lista_tareas_intervalo' 1000 2025 'Pro' %}">Listado de tareas creadas entre dos fechas</a></li>
-        <li><a href="{% url 'lista_ultimoUsuario' 2 %}">Último usuario que comentó en el proyecto 2</a></li>
-        <li><a href="{% url 'lista_comentarios' 1 'The' 2024 %}">Todos los comentarios de la tarea 1 que empiecen por 'The' y sean del 2024</a></li>
-        <li><a href="{% url 'lista_etiquetas' 4 %}">Todas las etiquetas de todas las tareas del proyecto 4</a></li>
-        <li><a href="{% url 'lista_usuarios_sinTarea'%}">Todos los usuarios que no tienen tareas asignadas</a></li>
-    </ol>
+{% extends "principal.html" %}
+
+{% load static %}
+
+{% block cabecera %}
+    <h1>Ejemplo de Template Tag block</h1>
+{% endblock %}
+
+
 
 </body>
 </html>
