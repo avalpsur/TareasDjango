@@ -57,15 +57,3 @@ def listar_etiquetas(request,id_proyecto):
 def listar_usuarios_sinTarea(request):
     usuarios = Usuario.objects.filter(asignaciondetarea=None)
     return render(request, 'usuario/lista.html',{"usuarios_mostrar":usuarios})
-
-def error_404(request, exception=None):
-    return render(request, 'errores/404.html',None,None,404)
-
-def error_500(request,exception = None):
-    return render(request, 'errores/500.html',None,None,500)
-
-def error_403(request, exception=None):
-    return render(request, 'errores/403.html',None,None,403)
-
-def error_400(request, exception=None):
-    return render(request, 'errores/400.html',None,None,400)

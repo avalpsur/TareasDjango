@@ -6,13 +6,28 @@
 
             <div>
                 <h2>Nombre:</h2>
-                <p>{{ usuario.nombre }}</p>
+                {% if usuario.nombre == "Agapito"%}
+                    <p>Tiene usted un nombre muy curioso señor Agapito</p>
+                {% else %}
+                    <p>{{ usuario.nombre|capfirst }}</p>
+                {% endif %}
 
                 <h2>Correo electrónico:</h2>
-                <p>{{ usuario.correo_electronico }}</p>
+                <p>{{ usuario.correo_electronico|lower }}</p>
 
                 <h2>Fecha de registro:</h2>
-                <p>{{ usuario.fecha_registro }}</p>
+                <p>{{ usuario.fecha_registro|date:"d-m-Y" }}</p>
+
+                <h2>Sueldo:</h2>
+                {% if usuario.sueldo <= 18000 %}
+                    <p>Ta la cosa mala</p>
+                {% elif usuario.sueldo >18000 %}
+                    <p>Puede llegar a fin de mes</p>
+                {% endif %}
+
+                {% if usuario.nombre != "Agapito" and usuario.sueldo < 15000 %}
+                    <p>No tiene un nombre tan feo, pero es usted un tieso...</p>
+                {% endif %}
             </div>
         
     </body>

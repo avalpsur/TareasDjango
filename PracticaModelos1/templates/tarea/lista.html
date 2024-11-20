@@ -7,7 +7,8 @@
         <h1>Lista de Tareas</h1>
 
         {% for tarea in tareas_mostrar %}
-            {% include "tarea.html" %}
+            {% block content %}
+            {% endblock %}
         {% endfor %}
         
     </body>

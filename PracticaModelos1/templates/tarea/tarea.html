@@ -1,6 +1,7 @@
-<div>
+{% block content %} 
+    <div>
     <h2>Título de la tarea:</h2>
-    <p>{{ tarea.titulo }}</p>
+    <p>{{ tarea.titulo|cut:" " }}</p>
 
     <h2>Descripción:</h2>
     <p>{{ tarea.descripcion }}</p>
@@ -8,8 +9,15 @@
     <h2>Prioridad:</h2>
     <p>{{ tarea.prioridad }}</p>
 
-    <h2>Estado:</h2>
-    <p>{{ tarea.estado }}</p>
+    {% if tarea.estado == "Pend" %}
+        <p>Estado: Pendiente</p>
+    {% elif tarea.estado == "Pro" %}
+        <p>Estado: En progreso</p>
+    {% elif tarea.estado == "Com" %}
+        <p>Estado: Completada</p>
+    {% else %}
+        <p>Estado: Desconocido</p>
+    {% endif %}
 
     <h2>¿Completada?:</h2>
     <p>{{ tarea.completada }}</p>
@@ -24,12 +32,15 @@
     <p>{{ tarea.proyecto.nombre }}</p>
 
     <h2>Creador:</h2>
-    <p>{{ tarea.creador.nombre }}</p>
+    <p>{{ tarea.creador.nombre|center }}</p>
 
     <h2>Usuarios asignados:</h2>
     <ul>
         {% for asignacion in tarea.usuario.all %}
             <li>{{ asignacion.nombre }}</li>
+        {% empty %}
+            <p><strong>No tiene usuarios asignados</strong></p>
         {% endfor %}
     </ul>
 </div>
+{% endblock %}

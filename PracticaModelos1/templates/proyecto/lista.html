@@ -7,7 +7,9 @@
         <h1>Lista de Proyectos</h1>
 
         {% for proyecto in proyectos_mostrar %}
-            {% {% include "proyecto.html" %} %}
+            {% include "proyecto.html" %}
+        {% empty %}
+            <p><strong>No hay proyectos que cumplan con esos requisitos</strong></p>
         {% endfor %}
         
     </body>
